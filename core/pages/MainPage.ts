@@ -1,5 +1,5 @@
 import { expect, Locator, Page } from "@playwright/test";
-import { WaiterUtil } from "./utils/WaiterUtil";
+import { WaiterUtil } from "../utils/WaiterUtil";
 
 export interface ProductInfo {
   name: string;
@@ -137,8 +137,6 @@ export class MainPage {
     await WaiterUtil.timeOut(5000);
     await this.cartLinkLocator.click();
   }
-
-
 
   /** 
    * Переходит на страницу товара со скидкой из популярных товаров на главной страницы

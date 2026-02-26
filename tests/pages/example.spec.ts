@@ -1,12 +1,12 @@
 import { test, expect } from '@playwright/test';
-import { MainPage } from '../models/MainPage';
-import { LoginComponent } from '../models/components/LoginComponent';
-import { ShoppingCartPage } from '../models/ShoppingCartPage';
-import { ProductEqulsUtil } from '../models/utils/ProductEqulsUtil';
-import { ProductPage } from '../models/ProductPage';
-import { OrderSuccessPage } from '../models/OrderSuccessPage';
-import { WaiterUtil } from '../models/utils/WaiterUtil';
-import { PageUrls } from '../constant/PageUrls';
+import { MainPage } from '../../core/pages/MainPage';
+import { LoginComponent } from '../../core/pages/components/LoginComponent';
+import { ShoppingCartPage } from '../../core/pages/ShoppingCartPage';
+import { ProductEqulsUtil } from '../../core/pages/utils/ProductEqulsUtil';
+import { ProductPage } from '../../core/pages/ProductPage';
+import { OrderSuccessPage } from '../../core/pages/OrderSuccessPage';
+import { WaiterUtil } from '../../core/utils/WaiterUtil';
+import { PageUrls } from '../../core/constant/PageUrls';
 
 let mainPage: MainPage;
 let loginComponent: LoginComponent;
@@ -48,8 +48,8 @@ test('Test case 1 - Заказ одного товара без скидки', a
   });
   await test.step('Шаг 5. Подтверждение заказа', async () => {
     await shoppingCartPage.clickConfirmOrder();
-    await orderSuccessPage.compareTitle('Your order is successfully completed!');
-    await orderSuccessPage.compareMessage('Thank you for shopping in our store. We will process your order shortly.');
+    await expect(await orderSuccessPage.compareTitle('Your order is successfully completed!')).toBe(true);
+    await expect(await orderSuccessPage.compareMessage('Thank you for shopping in our store. We will process your order shortly.')).toBe(true);
   });
 });
 

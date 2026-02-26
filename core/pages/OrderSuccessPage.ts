@@ -25,13 +25,13 @@ export class OrderSuccessPage {
   }
 
   // Сравнить ожидаемый текст с текущим заголовком
-  async compareTitle(expectedTitle: string): Promise<boolean> {
+  async compareTitle(expectedTitle: string) {
     const actualTitle = await this.getTitle();
     return actualTitle.trim() === expectedTitle.trim();
   }
 
   // Сравнить ожидаемое сообщение с текущим
-  async compareMessage(expectedMessage: string): Promise<boolean> {
+  async compareMessage(expectedMessage: string) {
     const actualMessage = await this.getMessage();
     return actualMessage.trim() === expectedMessage.trim();
   }
